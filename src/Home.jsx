@@ -1,15 +1,24 @@
-import { FaBars } from 'react-icons/fa';
+import { FaBars } from "react-icons/fa";
+import Sidebar from "./Sidebar";
+import { useState } from "react";
 
 const Home = () => {
-
+  const [menu, setMenu] = useState(false);
   return (
     <main>
-      <button className='sidebar-toggle'>
-        <FaBars />
-      </button>
-      <button className='btn'>
-        show modal
-      </button>
+      {menu ? (
+        <Sidebar />
+      ) : (
+        <button
+          onClick={() => {
+            setMenu(!menu);
+          }}
+          className="sidebar-toggle"
+        >
+          <FaBars />
+        </button>
+      )}
+      <button className="btn">show modal</button>
     </main>
   );
 };
