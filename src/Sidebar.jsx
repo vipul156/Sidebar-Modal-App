@@ -28,7 +28,7 @@ const Sidebar = () => {
   }, [isSidebarOpen, closeSidebar]);
 
   return (
-    <aside className={`sidebar ${isSidebarOpen && "show-sidebar"}`}>
+    <aside ref={sidebarRef} className={`sidebar ${isSidebarOpen && "show-sidebar"}`}>
       <div className="sidebar-header">
         <button onClick={closeSidebar} className="close-btn">
           <FaTimes />
