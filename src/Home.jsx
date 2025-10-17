@@ -1,24 +1,22 @@
 import { FaBars } from "react-icons/fa";
-import Sidebar from "./Sidebar";
-import { useState } from "react";
+import { useGlobalContext } from "./context";
 
 const Home = () => {
-  const [menu, setMenu] = useState(false);
+  const { isSidebarOpen, openSidebar, isModalOpen, openModal } =
+    useGlobalContext();
+
   return (
     <main>
-      {menu ? (
-        <Sidebar />
-      ) : (
-        <button
-          onClick={() => {
-            setMenu(!menu);
-          }}
-          className="sidebar-toggle"
-        >
+      {!isSidebarOpen && (
+        <button onClick={openSidebar} className="sidebar-toggle">
           <FaBars />
         </button>
       )}
-      <button className="btn">show modal</button>
+      {!isModalOpen && (
+        <button onClick={openModal} className="btn">
+          show modal
+        </button>
+      )}
     </main>
   );
 };
